@@ -1,0 +1,18 @@
+
+<h1>Details from: <%= @ingredient.name %> </h1>
+
+
+<p><%= @ingredient.name %></p>
+<p><%= @ingredient.created_at %></p>
+<p><%= @ingredient.updated_at %></p>
+<br>
+<br>
+<ul class="list-group">
+  <% @ingredient.ingredients.each do |ingredient| %>
+    <li class="list-group-item">
+      <%= ingredient.content %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to 'Back to list', ingredients_path %>
