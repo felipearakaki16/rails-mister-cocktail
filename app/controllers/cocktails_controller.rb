@@ -1,5 +1,5 @@
 class CocktailsController < ApplicationController
-  before_action :set_cocktail, only: [:show, :edit ]
+  before_action :set_cocktail, only: [:show]
 
   # GET /cocktails
   def index
@@ -8,7 +8,10 @@ class CocktailsController < ApplicationController
 
   # GET /cocktails/1
   def show
-  end
+    # ingreditents
+    # doses adicionar e ver id form
+    @dose = Dose.new
+   end
 
   # GET /cocktails/new
   def new
@@ -20,30 +23,34 @@ class CocktailsController < ApplicationController
     @cocktail = Cocktail.new(cocktail_params)
     # @dose = Dose.new(dose_params)
     if @cocktail.save
-      redirect_to @cocktail, notice: 'Cocktail successfully created.'
+      redirect_to cocktail_path(@cocktail), notice: 'Cocktail successfully created.'
     else
-      render :new
+      render 'new'
     end
   end
 
     # GET /cocktails/1/edit
-  def edit
-  end
+  # def edit
+  # end
   
   # PATCH/PUT /cocktails/1
-  def update
-    if @cocktail.update(cocktail_params)
-      redirect_to @cocktail, notice: 'Cocktail successfully updated.'
-    else
-      render :edit
-    end
-  end
+  # def update
+  #   if @cocktail.update(cocktail_params)
+  #     redirect_to @cocktail, notice: 'Cocktail successfully updated.'
+  #   else
+  #     render :edit
+  #   end
+  # end
 
   # DELETE /cocktails/1
-  def destroy
-    @cocktail.destroy
-    redirect_to cocktails_url, notice: 'Cocktail successfully destroyed.'
-  end
+  # def destroy
+  #   @cocktail.destroy
+  #   redirect_to cocktails_url, notice: 'Cocktail successfully destroyed.'
+  # end
+
+
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
